@@ -34,7 +34,8 @@ docs = [
   "sphinx",
   "sphinx-copybutton",
   "pydata-sphinx-theme",
-  "commonmark",
+  "pypandoc",
+  "pypandoc-binary",
 ]
 
 [build-system]

@@ -1,7 +1,7 @@
 # Imports
 from pathlib import Path
 import sys
-import commonmark
+import pypandoc
 
 # Adding the module directory to PATH
 script_file = Path(__file__)
@@ -40,15 +40,14 @@ html_theme_options = {
 }
 
 
-
 # Hooks
-def docstring(app, what, name, obj, options, lines):
+def process_docstring(app, what, name, obj, options, lines):
   """Converts markdown docstrings to ReST."""
   md  = '\n'.join(lines)
-  ast = commonmark.Parser().parse(md)
-  rst = commonmark.ReStructuredTextRenderer().render(ast)
+  rst = pypandoc.convert_text(md, 'rst', 'markdown')
   lines[:] = rst.splitlines()
+
 
 # Connecting hooks
 def setup(app):
-  app.connect('autodoc-process-docstring', docstring)
+  app.connect('autodoc-process-docstring', process_docstring)
