@@ -33,13 +33,13 @@ example_file_to_key = {
 
 
 # Tests
-def test_get_encryption_key():
+def test_new_crypt_key():
   for (file, key) in example_file_to_key.items():
-    assert key == acd.get_encryption_key(file)
+    assert key == acd.new_crypt_key(file)
     if not file:
       continue
-    assert key == acd.get_encryption_key(Path(file))
-    assert key == acd.get_encryption_key(Path.cwd() / file)
+    assert key == acd.new_crypt_key(Path(file))
+    assert key == acd.new_crypt_key(Path.cwd() / file)
 
 
 def test_read():
