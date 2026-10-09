@@ -1,8 +1,8 @@
 # Imports
-from pathlib import Path
 import io
 import os
 import tempfile
+from pathlib import Path
 
 # Going into the module directory
 script_file = Path(__file__)
@@ -11,23 +11,26 @@ os.chdir(script_dir)
 
 # Checking the environment
 assert (Path.cwd() / 'acd').is_dir()
+assert (Path.cwd() / 'acd' / '__init__.py').is_file()
 
 # Importing the library
 import acd
 
 # Example data
+root = os.path.abspath(os.sep)
 example_encryption_key = b'192-45-0-55-66-241-55-117'
 example_data = {'example-file': b'example file contents'}
 example_data_encrypted = b'\x0c\x00\x00\x00example-file\x15\x00\x00\x00\x96\x00\x00\x00\xb1\x00\x00\x00\x93\x00\x00\x00\x9a\x00\x00\x00\xa4\x00\x00\x00\xa1\x00\x00\x00\x92\x00\x00\x00P\x00\x00\x00\x93\x00\x00\x00\x9e\x00\x00\x00\xa1\x00\x00\x00\x92\x00\x00\x00V\x00\x00\x00\x99\x00\x00\x00\x9c\x00\x00\x00\xa0\x00\x00\x00\xa8\x00\x00\x00\x96\x00\x00\x00\x9b\x00\x00\x00\xa9\x00\x00\x00\xa8\x00\x00\x00'
 example_file_to_key = {
-  'testing': b'254-7-113-249-206-21-55-104',
-  'test': b'192-45-0-55-66-241-55-117',
-  't': b'116-0-0-131-66-101-171-171',
-  '': b'0-0-0-131-66-101-171-171',
-  'data': b'40-157-0-188-66-4-74-101',
-  'data.acd': b'40-157-0-188-66-4-74-101',
-  'DAtAbaNAnA$': b'40-157-0-188-66-4-74-101',
+  os.path.join('a', 'testing'): b'254-7-113-249-206-21-55-104',
+  os.path.join(os.curdir, 'bc', 'test'): b'192-45-0-55-66-241-55-117',
+  Path(os.pardir, 'def', 't'): b'116-0-0-131-66-101-171-171',
+  os.path.join(root, 'ghij', '🏎️'): b'226-151-245-145-58-247-28-144',
+  Path('klmno', 'data'): b'33-150-122-205-66-141-64-112',
+  os.path.join('pqrstu', 'data.acd'): b'175-71-117-68-22-131-59-118',
+  Path('vwxyz', 'DAtAbaNAnA$'): b'88-191-111-161-66-119-53-123',
 }
+
 
 # Tests
 def test_get_encryption_key():
