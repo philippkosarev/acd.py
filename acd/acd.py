@@ -122,10 +122,10 @@ def write(data: dict, fp, encryption_key: bytes):
   validated_data = {}
   for key, val in data.items():
     if not isinstance(key, str):
-      raise TypeError(f'Key {key!r} in given `data` is not a string')
+      raise TypeError(f'Invalid Key type {type(key)}')
     key = key.encode('utf-8')
     if not isinstance(val, (bytes, bytearray)):
-      raise TypeError(f'Value {val!r} in given `data` is not a string')
+      raise TypeError(f'Invalid value type {type(val)}')
     validated_data[key] = val
   # Writing validated data
   for key, value in validated_data.items():
