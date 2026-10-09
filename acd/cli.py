@@ -63,7 +63,7 @@ def _select(title: str, items: list, prompt: str) -> str or None:
 
 
 def _read_file(file) -> str:
-  with open(file) as fp:
+  with open(file, 'rb') as fp:
     return fp.read()
 
 
