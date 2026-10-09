@@ -1,7 +1,7 @@
 [project]
 name = "acd.py"
 description = "Python module for reading and writing Assetto Corsa Data (.acd) files."
-version = "1.0.0"
+version = "1.1.0"
 
 readme = "README.md"
 license = "GPL-2.0"
