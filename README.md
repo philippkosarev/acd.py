@@ -12,7 +12,7 @@ pip install acd.py
 
 ## Notes about the .acd file format
 - Most .acd files do not have a signature, so it's usually impossible to check whether a given file is actualy a .acd file without attempting to read it.
-- Moving or renaming a .acd file can make it impossible to decrypt because the encryption key is generated based on either the basename or dirname of the specific file (see the [docs](https://philippkosarev.github.io/acd.py/acd.get_encryption_key_for_string) for a more in-depth explanation).
+- Moving or renaming a .acd file can make it impossible to decrypt because the encryption key is generated based on either the basename or dirname of the specific file (see the [docs](https://philippkosarev.github.io/acd.py/#acd.new_crypt_key) for a more in-depth explanation).
 
 ## Using the library
 See the [documentation](https://philippkosarev.github.io/acd.py) for examples on how to use the library.
